@@ -1,24 +1,17 @@
 from flask import Flask, render_template, redirect
-from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
-# bootstrap = Bootstrap(app)
 
 
 @app.route("/")
 def base():
-    return render_template("index2.html")
+    return render_template("base.html", titel='ХАБ')
 
 
-@app.route("/")
-def navi():
-    return render_template("index.html")
-
-
-# @app.route("/")
-# def df():
-#     return render_template("index3.html")
+# @app.route("/navi")
+# def navi():
+#     return render_template("index.html")
 
 
 def main():

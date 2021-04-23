@@ -1,26 +1,44 @@
-{% extends 'bootstrap/base.html' %}
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.82.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
 
-{% block title %}
-    {% if title %}{{ title }} - Microblog{% else %}Welcome to Microblog{% endif %}
-{% endblock %}
 
-{% block navbar %}
-    <nav class="navbar navbar-default">
-        ... здесь должна быть навигационная панель  (см. полный код на GitHub) ...
-    </nav>
-{% endblock %}
 
-{% block content %}
-    <div class="container">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
 
-        {# содержимое приложения которое должно быть предоставлено в блоке app_content #}
-        {% block app_content %}{% endblock %}
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">НУАР</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link active" aria-current="page" href="#">Хаб</a>
+        <a class="nav-link" href="#">Игра</a>
+        {% if True %}
+          <a class="nav-link" href="#">Профиль</a>
+        {% else %}
+          <a class="nav-link" href="#">Вход</a>
+      </nav>
     </div>
-{% endblock %}
+  </header>
+
+
+  <footer class="mt-auto text-white-50">
+<!--    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>-->
+  </footer>
+</div>
+
+
+    
+  </body>
+</html>
