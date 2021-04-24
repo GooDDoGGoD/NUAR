@@ -27,46 +27,44 @@
         <a class="nav-link" href="/hab">Хаб</a>
         <a class="nav-link" href="/search">Игра</a>
         {% if current_user.is_authenticated %}
-          <a class="nav-link" href="/profile">{{ current_user.surname }}</a>
+          <a class="nav-link active" aria-current="page" href="#">{{ current_user.surname }}</a>
         {% else %}
-          <a class="nav-link active" aria-current="page" href="#">Вход</a>
+          <a class="nav-link" href="/login">Вход</a>
         {% endif %}
       </nav>
     </div>
   </header>
 
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.email.label }}<br>
-            {{ form.email(class="form-control", type="email") }}<br>
-            {% for error in form.email.errors %}
-                <div class="alert alert-danger" role="alert">
-                    {{ error }}
-                </div>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(class="form-control", type="password") }}<br>
-            {% for error in form.password.errors %}
-                <div class="alert alert-danger" role="alert">
-                    {{ error }}
-                </div>
-            {% endfor %}
-        </p>
-         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-         <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
-         <nav class="nav nav-masthead justify-content-center float-md-end">
-          <a class="nav-link" href="/register">Ещё нет аккаунта?</a>
-         </nav>
-        <div>{{ message }}</div>
-    </form>
+
+  <table>
+        <tr valign="left">
+            <td><img class="bd-placeholder-img rounded-circle" width="180" height="180" src="../static/img/icon-180.jpg"</td>
+            <td><h1>{{ current_user.surname }}</h1></td>
+        </tr>
+        <tr valign="left">
+            <td><a class="btn btn-secondary" href="#">Загрузить (не работает)</a></td>
+            <td><h5>Побед: None  Игры: None</h5></td>
+        </tr>
+        <tr valign="left">
+            <td><a class="btn btn-danger" href="/logout">Выйти</a></td>
+        </tr>
+    </table>
+
+
+<!--    <div class="row">-->
+<!--      <div class="col-lg-4">-->
+<!--        <p><img class="bd-placeholder-img rounded-circle" width="180" height="180" src="../static/img/icon-180.jpg" align="left" />-->
+<!--          <h3>{{ current_user.surname }}</h3></p>-->
+
+<!--        <img class="bd-placeholder-img rounded-circle" width="180" height="180" src="../static/img/icon-180.jpg">-->
+<!--        <p><a class="btn btn-secondary" href="#">Изменить (не работает)</a></p>-->
+<!--      </div>-->
+<!--    </div>-->
 
   <footer class="mt-auto text-white-50">
 <!--    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>-->
   </footer>
-</div>
+
 
 
 

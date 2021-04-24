@@ -19,14 +19,14 @@ def load_user(user_id):
     return db_sess.query(User).get(user_id)
 
 
-@app.route("/test1")
-def test1():
-    return render_template("base2.html", title='ТЕст 1')
+@app.route("/profile")
+def profile():
+    return render_template("profile.html", title='Профиль')
 
 
-@app.route("/test2")
-def test2():
-    return render_template("base.html", title='ТЕст 2')
+@app.route("/profile/change")
+def change():
+    return render_template("change.html", title='Профиль')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -72,13 +72,8 @@ def reqister():
             return render_template('register.html', title='Регистрация', form=form,
                                    message="Этот пользователь уже существует")
         user = User(
-            # name=form.name.data,
             surname=form.surname.data,
-            # age=form.age.data,
-            # position=form.position.data,
-            email=form.email.data,
-            # speciality=form.speciality.data,
-            # address=form.address.data
+            email=form.email.data
         )
         user.set_password(form.password.data)
         db_sess.add(user)
