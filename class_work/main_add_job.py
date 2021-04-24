@@ -45,12 +45,12 @@ def login():
 @app.route('/hab')
 @app.route('/')
 def hab():
-    return render_template("hab.html", title='ХАБ')
+    return render_template("hab.html", title='НУАР')
 
 
 @app.route('/search')
 def search():
-    return render_template("base2.html", title='Поиск игры')
+    return render_template("search.html", title='Поиск игры')
 
 
 @app.route('/logout')
