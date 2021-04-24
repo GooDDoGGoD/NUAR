@@ -2,10 +2,8 @@ from flask import Flask, render_template, redirect
 from flask_login import LoginManager, login_user, login_required, logout_user
 
 from data import db_session
-from data.add_job import AddJobForm
 from data.login_form import LoginForm
 from data.users import User
-from data.jobs import Jobs
 from data.register import RegisterForm
 
 app = Flask(__name__)
@@ -20,9 +18,11 @@ def load_user(user_id):
     db_sess = db_session.create_session()
     return db_sess.query(User).get(user_id)
 
+
 @app.route("/test1")
 def test1():
     return render_template("base2.html", title='ТЕст 1')
+
 
 @app.route("/test2")
 def test2():
@@ -45,11 +45,12 @@ def login():
 @app.route('/hab')
 @app.route('/')
 def hab():
-    return render_template("hab.html", title='ТЕст 2')
+    return render_template("hab.html", title='ХАБ')
+
 
 @app.route('/search')
 def search():
-    pass
+    return render_template("base2.html", title='Поиск игры')
 
 
 @app.route('/logout')
@@ -84,7 +85,6 @@ def reqister():
         db_sess.commit()
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
-
 
 
 def main():
