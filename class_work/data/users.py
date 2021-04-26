@@ -18,8 +18,8 @@ class User(SqlAlchemyBase, UserMixin):
     email = sqlalchemy.Column(sqlalchemy.String, index=True, unique=True, nullable=True)
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     modifed_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
-    win = sqlalchemy.Column(sqlalchemy.Integer, nullable=True, autoincrement=True)
-    game = sqlalchemy.Column(sqlalchemy.Integer, nullable=True, autoincrement=True)
+    win = sqlalchemy.Column(sqlalchemy.Integer, nullable=True, default=0)
+    game = sqlalchemy.Column(sqlalchemy.Integer, nullable=True, default=0)
 
     # jobs = orm.relation("Jobs", back_populates='user')
     # avatar =

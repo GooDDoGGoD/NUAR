@@ -40,24 +40,40 @@
 
 
 <!--  <div>-->
-    <h6 class="text-top">как распрастранить линк/цсс только на чать элементов</h6>
+<!--    <h6 class="text-top">как распрастранить линк/цсс только на чать элементов</h6>-->
 <!--    <img src="../static/img/nuar.jpg" width="1200px" vspace="20px">-->
 <!--  </div>-->
 
-<!--<div class="cover-container">-->
- <nav class="navbar navbar-dark bg-primary">
-   <a class="navbar-brand" href="#"></a>
- </nav>
 
-
-  <table>
+    {% for game in games %}
+      <nav class="navbar navbar-dark bg-primary">
+          <a class="navbar-brand" href="#">GameID: {{game.id}}</a>
+      </nav>
+      <table>
         <tr>
-            <td><img class="bd-placeholder-img rounded-circle" width="135px" height="135px" src="../static/img/avatar/11.jpg?rnd=<?= rand(0, 9999) ?>"></td>
-            <td><img class="bd-placeholder-img rounded-circle" width="135px" height="135px" src="../static/img/avatar/11.jpg?rnd=<?= rand(0, 9999) ?>"></td>
-            <td><img class="bd-placeholder-img rounded-circle" width="135px" height="135px" src="../static/img/avatar/10.jpg?rnd=<?= rand(0, 9999) ?>"></td>
+          {% if game.id_player_1 == None %}
+            <td><img class="bd-placeholder-img rounded-circle" width="135px" height="135px" src="../static/img/0.jpg?rnd=<?= rand(0, 9999) ?>"></td>
+          {% else %}
+            <td><img class="bd-placeholder-img rounded-circle" width="135px" height="135px" src="../static/img/avatar/{{ game.id_player_1 }}.jpg?rnd=<?= rand(0, 9999) ?>"></td>
+          {% endif %}
+
+          {% if game.id_player_2 == None %}
+            <td><img class="bd-placeholder-img rounded-circle" width="135px" height="135px" src="../static/img/0.jpg?rnd=<?= rand(0, 9999) ?>"></td>
+          {% else %}
+            <td><img class="bd-placeholder-img rounded-circle" width="135px" height="135px" src="../static/img/avatar/{{ game.id_player_2 }}.jpg?rnd=<?= rand(0, 9999) ?>"></td>
+          {% endif %}
+
+          {% if game.id_player_3 == None %}
+            <td><img class="bd-placeholder-img rounded-circle" width="135px" height="135px" src="../static/img/0.jpg?rnd=<?= rand(0, 9999) ?>"></td>
+          {% else %}
+            <td><img class="bd-placeholder-img rounded-circle" width="135px" height="135px" src="../static/img/avatar/{{ game.id_player_3 }}.jpg?rnd=<?= rand(0, 9999) ?>"></td>
+          {% endif %}
         </tr>
-    </table>
-<!--</div>-->
+      </table>
+      <br><br>
+  {% endfor %}
+
+
 
 
 

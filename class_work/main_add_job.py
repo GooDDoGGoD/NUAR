@@ -5,6 +5,7 @@ from shutil import copy
 from data import db_session
 from data.login_form import LoginForm
 from data.users import User
+from data.games import Games
 from data.register import RegisterForm
 
 app = Flask(__name__)
@@ -58,7 +59,9 @@ def hab():
 
 @app.route('/search')
 def search():
-    return render_template("search.html", title='Поиск игры')
+    db_sess = db_session.create_session()
+    games = db_sess.query(Games).all()
+    return render_template("search.html", title='Поиск игры', games=games)
 
 
 @app.route('/logout')
