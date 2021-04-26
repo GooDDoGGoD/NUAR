@@ -14,6 +14,7 @@
 
 
 
+
     <!-- Custom styles for this template -->
     <link href="../static/css/cover.css" rel="stylesheet">
   </head>
@@ -38,15 +39,31 @@
 
   <table>
         <tr valign="left">
-            <td><img class="bd-placeholder-img rounded-circle" width="180" height="180" src="../static/img/icon-180.jpg"</td>
+            <td><img class="bd-placeholder-img rounded-circle" width="180" height="180" src="../static/img/avatar/{{ current_user.id }}.jpg?rnd=<?= rand(0, 9999) ?>"></td>
             <td><h1>{{ current_user.surname }}</h1></td>
         </tr>
         <tr valign="left">
-            <td><a class="btn btn-secondary" href="#">Загрузить (не работает)</a></td>
-            <td><h5>Побед: None  Игры: None</h5></td>
+<!--            <a class="btn btn-secondary" href="#">Загрузить</a>-->
+            <td>
+                <form method="post" enctype="multipart/form-data">
+<!--                    <input type="file" name="'file" accept="image/jpeg" size="0">-->
+                    <div>
+                        <input type="file" class="form-control-file" id="photo" name="file">
+                        <input type="hidden" name="id" value="{{ current_user.id }}">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                    <a class="btn btn-danger" href="/profile">Отмена</a>
+                </form>
+            </td>
+            <td><h5>Побед: {{current_user.win}}  Игры: {{current_user.game}}</h5></td>
         </tr>
         <tr valign="left">
-            <td><a class="btn btn-danger" href="/logout">Выйти</a></td>
+            <td>
+<!--             <form class="login_form" method="post" enctype="multipart/form-data">-->
+<!--               <button type="submit" class="btn btn-primary">Отправить</button>-->
+<!--             </form>-->
+            </td>
         </tr>
     </table>
 

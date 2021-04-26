@@ -38,12 +38,12 @@
 
   <table>
         <tr valign="left">
-            <td><img class="bd-placeholder-img rounded-circle" width="180" height="180" src="../static/img/icon-180.jpg"></td>
+            <td><img class="bd-placeholder-img rounded-circle" width="180" height="180" src="../static/img/avatar/{{ current_user.id }}.jpg?rnd=<?= rand(0, 9999) ?>"></td>
             <td><h1>{{ current_user.surname }}</h1></td>
         </tr>
         <tr valign="left">
-            <td><a class="btn btn-secondary" href="#">Загрузить (не работает)</a></td>
-            <td><h5>Побед: None  Игры: None</h5></td>
+            <td><a class="btn btn-secondary" href="/profile/change">Изменить</a></td>
+            <td><h5>Побед: {{current_user.win}}  Игры: {{current_user.game}}</h5></td>
         </tr>
         <tr valign="left">
             <td><a class="btn btn-danger" href="/logout">Выйти</a></td>

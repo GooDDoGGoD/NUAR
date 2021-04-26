@@ -1,5 +1,6 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 from flask_login import LoginManager, login_user, login_required, logout_user
+from shutil import copy
 
 from data import db_session
 from data.login_form import LoginForm
@@ -24,8 +25,15 @@ def profile():
     return render_template("profile.html", title='Профиль')
 
 
-@app.route("/profile/change")
+@app.route("/profile/change", methods=['POST', 'GET'])
 def change():
+    if request.method == 'POST':
+        f = request.files['file']
+        id = request.form.get('id')
+        # id = request.form.get('id')
+        with open(f'static/img/avatar/{id}.jpg', 'wb') as file:
+            file.write(f.read())
+        # return render_template("profile.html", title='Профиль')
     return render_template("change.html", title='Профиль')
 
 
@@ -78,15 +86,17 @@ def reqister():
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
+        copy("static/img/avatar/photo.jpg", f'static/img/avatar/{user.id}.jpg')
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
 
 
 def main():
     db_session.global_init("db/mars_explorer.sqlite")
-
     app.run(host='0.0.0.0', port=8080, debug=True)
 
 
 if __name__ == '__main__':
     main()
+
+
